@@ -11,10 +11,10 @@ public class debiCardValid {
 
     a = a + b;
 
-      return a % 10 == 0;
+    return a % 10 == 0;
   }
 
-  public int sumOfDoubleEvenPlace(long number) {
+  private int sumOfDoubleEvenPlace(long number) {
 
     int h = 1;
     int sum = 0;
@@ -34,25 +34,7 @@ public class debiCardValid {
     return sum;
   }
 
-  public int getDigit(int number) {
-    int sum = 0;
-
-    if (getSize(number) == 2) {
-      int a;
-      int b;
-      a = number % 10;
-      b = (number - a) / 10;
-      number = a + b;
-
-      return number;
-    } else if (getSize(number) == 1) {
-      return number;
-    }
-
-    return -1;
-  }
-
-  public int sumOfOddPlace(long number) {
+  private int sumOfOddPlace(long number) {
 
     int h = 1;
     int sum = 0;
@@ -71,14 +53,7 @@ public class debiCardValid {
     return sum;
   }
 
-  public boolean prefixMatched(long number, int d) {
-    int i = getSize(d);
-    long j = getPrefix(number, i);
-
-    return (long) d == j;
-  }
-
-  public int getSize(long d) {
+  private int getSize(long d) {
     int i = 19;
     int cnt = 0;
     long y;
@@ -101,27 +76,20 @@ public class debiCardValid {
     return cnt;
   }
 
-  public long getPrefix(long number, int k) {
+  private int getDigit(int number) {
 
-    int i = getSize(number);
-    long y;
-    long z;
-    StringBuilder strNum = new StringBuilder();
+    if (getSize(number) == 2) {
+      int a;
+      int b;
+      a = number % 10;
+      b = (number - a) / 10;
+      number = a + b;
 
-    while (i >= 0) {
-      y = number % (long) Math.pow(10, i);
-      z = number - y;
-      number = y;
-
-      strNum.append(z / (long) Math.pow(10, i));
-
-      i--;
+      return number;
+    } else if (getSize(number) == 1) {
+      return number;
     }
-
-    for (int u = k; u > 0; u--) {
-      number += (long) (strNum.charAt(u) - '0') * (long) Math.pow(10, (double) (u - 1));
-    }
-
-    return number;
+    return -1;
   }
+
 }
